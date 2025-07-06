@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Weekly Schedule</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f7f8;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background-color: #0077cc;
+      color: white;
+    }
+    td a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    td a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 700px) {
+      table, thead, tbody, th, td, tr { display: block; }
+      thead tr { display: none; }
+      td {
+        padding: 10px 10px 10px 50%;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+      td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: bold;
+        color: #333;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Weekly Schedule</h1>
+    <p><em>All activities linked. Gym after work. Weekends for social, review & tech.</em></p>
+  </header>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Morning</th>
+          <th>After Work</th>
+          <th>Evening</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Day">Monday</td>
+          <td data-label="Morning"><a href="tracker.html">Coding</a></td>
+          <td data-label="After Work"><a href="gym.html">Gym</a></td>
+          <td data-label="Evening"><a href="english.html">English</a></td>
+        </tr>
+        <tr>
+          <td data-label="Day">Tuesday</td>
+          <td data-label="Morning"><a href="english.html">English</a></td>
+          <td data-label="After Work"><a href="gym.html">Gym</a></td>
+          <td data-label="Evening"><a href="tracker.html">C#/Angular</a></td>
+        </tr>
+        <tr>
+          <td data-label="Day">Wednesday</td>
+          <td data-label="Morning"><a href="cm.html">Communication Skills</a></td>
+          <td data-label="After Work">Rest</td>
+          <td data-label="Evening"><a href="social.html">Podcast / Social Learning</a></td>
+        </tr>
+        <tr>
+          <td data-label="Day">Thursday</td>
+          <td data-label="Morning"><a href="english.html">English</a></td>
+          <td data-label="After Work"><a href="gym.html">Gym</a></td>
+          <td data-label="Evening"><a href="tech.html">Tech Exploration</a></td>
+        </tr>
+        <tr>
+          <td data-label="Day">Friday</td>
+          <td data-label="Morning"><a href="greek.html">Greek</a></td>
+          <td data-label="After Work"><a href="gym.html">Gym</a></td>
+          <td data-label="Evening"><a href="greek.html">Greek Review</a></td>
+        </tr>
+        <tr>
+          <td data-label="Day">Saturday</td>
+          <td data-label="Morning"><a href="tracker.html">Coding Project</a></td>
+          <td data-label="After Work"><a href="greek.html">Greek</a></td>
+          <td data-label="Evening"><a href="tech.html">Tech Learning</a></td>
+        </tr>
+        <tr>
+          <td data-label="Day">Sunday</td>
+          <td data-label="Morning"><a href="social.html">Social / Psychology</a></td>
+          <td data-label="After Work"><a href="gym.html">Gym</a></td>
+          <td data-label="Evening">Weekly Planning</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

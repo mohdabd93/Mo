@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>English Learning Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .topic-group { margin-bottom: 2rem; }
+    label { display: block; margin: 0.5rem 0; }
+    a.source-link { font-size: 0.9rem; color: #0077cc; text-decoration: none; margin-left: 1.2rem; }
+    a.source-link:hover { text-decoration: underline; }
+    header, footer { text-align: center; margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>English Fluency & Vocabulary Tracker</h1>
+  </header>
+
+  <main>
+    <section class="topic-group">
+      <h2>Daily Vocabulary</h2>
+      <label><input type="checkbox" data-id="vocab-1"> 10 Common Business Terms
+        <a href="https://quizlet.com/subject/business-english/" target="_blank" class="source-link">Quizlet Business English</a>
+      </label>
+      <label><input type="checkbox" data-id="vocab-2"> IT/Tech Vocabulary
+        <a href="https://www.bbc.co.uk/learningenglish/topics/technology" target="_blank" class="source-link">BBC Tech English</a>
+      </label>
+      <label><input type="checkbox" data-id="vocab-3"> Phrasal Verbs (Take off, Get by...)
+        <a href="https://www.englishclub.com/vocabulary/phrasal-verbs-list.htm" target="_blank" class="source-link">EnglishClub Phrasal Verbs</a>
+      </label>
+      <label><input type="checkbox" data-id="vocab-4"> Idioms in Business English
+        <a href="https://www.bbc.co.uk/learningenglish/english/course/business-english" target="_blank" class="source-link">BBC Business English Idioms</a>
+      </label>
+    </section>
+
+    <section class="topic-group">
+      <h2>Pronunciation</h2>
+      <label><input type="checkbox" data-id="pron-1"> TH Sound (think vs. sink)
+        <a href="https://www.youtube.com/watch?v=_BXr4aAX8qE" target="_blank" class="source-link">Rachel's English - TH Sound</a>
+      </label>
+      <label><input type="checkbox" data-id="pron-2"> R and L Sounds
+        <a href="https://www.youtube.com/watch?v=xw0jF87T2VY" target="_blank" class="source-link">English with Lucy - R & L</a>
+      </label>
+      <label><input type="checkbox" data-id="pron-3"> Stress & Intonation Practice
+        <a href="https://www.bbc.co.uk/learningenglish/english/features/pronunciation" target="_blank" class="source-link">BBC Pronunciation Tips</a>
+      </label>
+      <label><input type="checkbox" data-id="pron-4"> Shadowing Sentences
+        <a href="https://www.youtube.com/watch?v=LaX5Bx95Okk" target="_blank" class="source-link">Shadowing Technique - EnglishClass101</a>
+      </label>
+    </section>
+
+    <section class="topic-group">
+      <h2>Accent Training</h2>
+      <label><input type="checkbox" data-id="accent-1"> American Accent Basics
+        <a href="https://www.youtube.com/watch?v=9F2KUwGTmco" target="_blank" class="source-link">American Accent Training</a>
+      </label>
+      <label><input type="checkbox" data-id="accent-2"> Reduce Native Language Influence
+        <a href="https://www.youtube.com/watch?v=7s_fGd3c0m4" target="_blank" class="source-link">Accent Reduction Tips</a>
+      </label>
+      <label><input type="checkbox" data-id="accent-3"> Imitate TED Talkers
+        <a href="https://www.ted.com/talks" target="_blank" class="source-link">TED Talks</a>
+      </label>
+    </section>
+
+    <section class="topic-group">
+      <h2>Fluency Practice</h2>
+      <label><input type="checkbox" data-id="fluency-1"> Speak for 1 minute on any topic</label>
+      <label><input type="checkbox" data-id="fluency-2"> Answer 5 random questions</label>
+      <label><input type="checkbox" data-id="fluency-3"> Describe a picture (from Google Images)</label>
+    </section>
+
+    <section class="topic-group">
+      <h2>Listening & Shadowing</h2>
+      <label><input type="checkbox" data-id="listen-1"> TED Talk: "How to speak so people want to listen"
+        <a href="https://www.ted.com/talks/julian_treasure_how_to_speak_so_that_people_want_to_listen" target="_blank" class="source-link">Watch here</a>
+      </label>
+      <label><input type="checkbox" data-id="listen-2"> Podcast: 6 Minute English (BBC)
+        <a href="https://www.bbc.co.uk/learningenglish/english/features/6-minute-english" target="_blank" class="source-link">BBC 6 Minute English</a>
+      </label>
+      <label><input type="checkbox" data-id="listen-3"> Shadow 2 minutes from a video</label>
+    </section>
+
+    <section class="topic-group">
+      <h2>English at Work</h2>
+      <label><input type="checkbox" data-id="work-1"> Email Writing (Formal vs Informal)
+        <a href="https://www.bbc.co.uk/learningenglish/business/english/email-writing" target="_blank" class="source-link">BBC Email Writing</a>
+      </label>
+      <label><input type="checkbox" data-id="work-2"> Phrases for Meetings
+        <a href="https://www.englishclub.com/business-english/meetings.htm" target="_blank" class="source-link">EnglishClub Meetings Phrases</a>
+      </label>
+      <label><input type="checkbox" data-id="work-3"> Small Talk & Icebreakers
+        <a href="https://www.youtube.com/watch?v=AzgkzVq3l-k" target="_blank" class="source-link">Small Talk Tips</a>
+      </label>
+    </section>
+
+    <p><a href="index.html">Back to Weekly Schedule</a></p>
+  </main>
+
+  <script>
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      const id = cb.dataset.id;
+      if (localStorage.getItem(id) === "true") cb.checked = true;
+      cb.addEventListener('change', () => localStorage.setItem(id, cb.checked));
+    });
+  </script>
+</body>
+</html>
