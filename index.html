@@ -4,60 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
-  <button onclick="initNotifications()">Enable Notifications</button>
-
-<script>
-  function initNotifications() {
-    if ('Notification' in window) {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          scheduleNotificationAtCyprusTime(13, 5);
-        } else {
-          alert("Notifications not allowed.");
-        }
-      });
-    } else {
-      alert("Notifications not supported on this device.");
-    }
-  }
-</script>
 
   <script>
-  if ('Notification' in window) {
-    Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        scheduleNotificationAtCyprusTime(13, 12);
-      }
-    });
-  }
-
-  function scheduleNotificationAtCyprusTime(hour, minute) {
-    const now = new Date();
-    const target = new Date();
-
-    // إعداد توقيت الإشعار (بالساعة والدقيقة)
-    target.setHours(hour, minute, 0, 0);
-
-    // حساب فرق التوقيت بين الجهاز وتوقيت نيقوسيا (GMT+3)
-    const cyprusOffsetMinutes = 3 * 60;
-    const localOffsetMinutes = now.getTimezoneOffset(); // بالسالب في الصيف
-    const offsetDifference = (cyprusOffsetMinutes + localOffsetMinutes) * 60 * 1000;
-
-    const timeUntilNotification = target.getTime() - now.getTime() - offsetDifference;
-
-    if (timeUntilNotification > 0) {
-      setTimeout(() => {
-        new Notification("⏰ Reminder", {
-          body: "This is your test notification for 13:05 Cyprus time.",
-          icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+    function initNotifications() {
+      if ('Notification' in window) {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            scheduleNotificationAtCyprusTime(13, 5);
+          } else {
+            alert("Notifications not allowed.");
+          }
         });
-      }, timeUntilNotification);
-    } else {
-      console.log("📭 الوقت المحدد قد مضى بالفعل.");
+      } else {
+        alert("Notifications not supported on this device.");
+      }
     }
-  }
-</script>
 
+    function scheduleNotificationAtCyprusTime(hour, minute) {
+      const now = new Date();
+      const target = new Date();
+
+      target.setHours(hour, minute, 0, 0);
+
+      // حساب فرق التوقيت بين الجهاز ونيقوسيا
+      const cyprusOffsetMinutes = -180; // UTC+3 => -180
+      const localOffsetMinutes = now.getTimezoneOffset(); // e.g., -180 in summer
+      const offsetDifference = (cyprusOffsetMinutes - localOffsetMinutes) * 60 * 1000;
+
+      const timeUntilNotification = target.getTime() - now.getTime() + offsetDifference;
+
+      if (timeUntilNotification > 0) {
+        setTimeout(() => {
+          new Notification("⏰ Reminder", {
+            body: "This is your test notification for 13:05 Cyprus time.",
+            icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+          });
+        }, timeUntilNotification);
+      } else {
+        console.log("📭 الوقت المحدد قد مضى بالفعل.");
+      }
+    }
+  </script>
 
   <style>
     body {
@@ -118,6 +105,7 @@
   <header>
     <h1>My Weekly Schedule</h1>
     <p><em>All activities linked. Gym after work. Weekends for social, review & tech.</em></p>
+    <button onclick="initNotifications()">Enable Notifications</button>
   </header>
   <main>
     <table>
