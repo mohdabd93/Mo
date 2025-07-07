@@ -10,7 +10,7 @@
       if ('Notification' in window) {
         Notification.requestPermission().then(permission => {
           if (permission === 'granted') {
-            scheduleNotificationAtCyprusTime(13, 5);
+            scheduleNotificationAtCyprusTime(13, 17);
           } else {
             alert("Notifications not allowed.");
           }
