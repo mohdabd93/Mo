@@ -4,6 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
+
+  <script>
+  // تأكد من أن المتصفح يدعم الإشعارات
+  if ('Notification' in window) {
+    // اطلب إذن الإشعارات
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        scheduleDailyNotifications();
+      }
+    });
+  }
+
+  function scheduleDailyNotifications() {
+    const notificationTimes = [13:02, 14, 15]; // 13:00, 14:00, 15:00
+    const now = new Date();
+
+    notificationTimes.forEach((hour, index) => {
+      const target = new Date();
+      target.setHours(hour, 0, 0, 0);
+ 
+      const cyprusOffset = 3 * 60; // +3 hours in minutes
+      const localOffset = now.getTimezoneOffset(); // in minutes
+      const offsetDiff = (cyprusOffset + localOffset) * 60 * 1000;
+
+      const timeToNotify = target.getTime() - now.getTime() - offsetDiff;
+
+      if (timeToNotify > 0) {
+        setTimeout(() => {
+          showNotification(index);
+        }, timeToNotify);
+      }
+    });
+  }
+
+  function showNotification(index) {
+    const titles = ["Morning Task Reminder", "After Work Task Reminder", "Evening Task Reminder"];
+    const messages = [
+      "Time to start your morning task!",
+      "Get ready for your after-work activity!",
+      "Don't forget your evening task!"
+    ];
+
+    new Notification(titles[index], {
+      body: messages[index],
+      icon: 'https://cdn-icons-png.flaticon.com/512/1827/1827392.png'  
+    });
+  }
+</script>
+ 
   <style>
     body {
       font-family: Arial, sans-serif;
