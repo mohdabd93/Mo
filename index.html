@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
  
-<button id="notifyBtn">تمكين الإشعارات</button>
+  <button id="notifyBtn">تمكين الإشعارات</button>
 
-<script>
-  document.getElementById('notifyBtn').addEventListener('click', () => {
-    if ('Notification' in window) {
+  <script>
+    document.getElementById('notifyBtn').addEventListener('click', () => {
+      if (!('Notification' in window)) {
+        alert('الإشعارات غير مدعومة في هذا المتصفح.');
+        return;
+      }
+
       Notification.requestPermission().then(permission => {
         if (permission === 'granted') {
           alert('✅ تم منح الإذن للإشعارات');
+          new Notification('🔔 إشعار تجريبي', {
+            body: 'هذا إشعار يظهر فور منح الإذن.',
+            icon: 'https://cdn-icons-png.flaticon.com/512/1827/1827392.png'
+          });
         } else if (permission === 'denied') {
-          alert('❌ تم رفض الإذن');
+          alert('❌ تم رفض الإذن.');
         } else {
-          alert('⚠️ تم إلغاء طلب الإذن');
+          alert('⚠️ تم إلغاء طلب الإذن.');
         }
       });
-    } else {
-      alert('الإشعارات غير مدعومة في هذا المتصفح');
-    }
-  });
-</script>
-
-
-
-
-  <style>
+    });
+  </script>
     body {
       font-family: Arial, sans-serif;
       max-width: 900px;
