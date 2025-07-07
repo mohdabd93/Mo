@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
 
- 
-<button onclick="notify()">جرب إشعار</button>
+<button id="notifyBtn">تمكين الإشعارات</button>
 
 <script>
-function notify() {
-  Notification.requestPermission().then(permission => {
-    if(permission === 'granted') {
-      new Notification("🔔 إشعار تجريبي", {
-        body: "هل يظهر هذا الإشعار على موبايلك؟",
-        icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+  document.getElementById('notifyBtn').addEventListener('click', () => {
+    if ('Notification' in window) {
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          alert('تم منح الإذن للإشعارات!');
+          new Notification('🔔 الإشعارات مفعلة!');
+        } else if (permission === 'denied') {
+          alert('تم رفض الإذن.');
+        } else {
+          alert('تم إلغاء طلب الإذن.');
+        }
       });
     } else {
-      alert("لم يتم منح إذن الإشعارات.");
+      alert('الإشعارات غير مدعومة في هذا المتصفح.');
     }
   });
-}
 </script>
 
 
