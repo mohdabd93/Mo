@@ -5,24 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
 
-<button onclick="testNotification()">جرب إشعار الآن</button>
+ 
+<button onclick="notify()">جرب إشعار</button>
 
 <script>
-function testNotification() {
-  if ('Notification' in window) {
-    Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        new Notification("🔔 إشعار تجريبي", {
-          body: "إذا شفته، الإشعارات شغالة",
-          icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
-        });
-      } else {
-        alert("لم يتم منح إذن الإشعارات.");
-      }
-    });
-  } else {
-    alert("الإشعارات غير مدعومة في هذا المتصفح.");
-  }
+function notify() {
+  Notification.requestPermission().then(permission => {
+    if(permission === 'granted') {
+      new Notification("🔔 إشعار تجريبي", {
+        body: "هل يظهر هذا الإشعار على موبايلك؟",
+        icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+      });
+    } else {
+      alert("لم يتم منح إذن الإشعارات.");
+    }
+  });
 }
 </script>
 
@@ -86,7 +83,7 @@ function testNotification() {
   <header>
     <h1>My Weekly Schedule</h1>
     <p><em>All activities linked. Gym after work. Weekends for social, review & tech.</em></p>
-    <button onclick="initNotifications()">Enable Notifications</button>
+ 
   </header>
   <main>
     <table>
