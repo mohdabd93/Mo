@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
   <title>My Weekly Schedule</title>
   <style>
     body {
@@ -78,7 +79,7 @@
     <p><em>All activities linked. Gym after work. Weekends for social, review & tech.</em></p>
   </header>
 
-  <button id="notifyBtn">جرب الإشعار الآن</button>
+ 
 
   <main>
     <table>
@@ -136,23 +137,23 @@
       </tbody>
     </table>
   </main>
+   <button id="notifyBtn">جرب الإشعار الآن</button>
 
   <script>
     document.getElementById('notifyBtn').addEventListener('click', () => {
-      if ('Notification' in window) {
-        Notification.requestPermission().then(permission => {
-          if (permission === 'granted') {
-            new Notification("🔔 إشعار تجريبي", {
-              body: "هذا إشعار يظهر فورًا بعد الضغط.",
-              icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
-            });
-          } else {
-            alert("لم تمنح إذن الإشعارات.");
+      Push.Permission.request(() => {
+        Push.create("🔔 إشعار تجريبي", {
+          body: "هذا إشعار باستخدام مكتبة Push.js",
+          icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png",
+          timeout: 5000,
+          onClick: function () {
+            window.focus();
+            this.close();
           }
         });
-      } else {
-        alert("متصفحك لا يدعم الإشعارات.");
-      }
+      }, () => {
+        alert('لم يتم منح إذن الإشعارات');
+      });
     });
   </script>
 </body>
