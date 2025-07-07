@@ -4,6 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
+  <button onclick="initNotifications()">Enable Notifications</button>
+
+<script>
+  function initNotifications() {
+    if ('Notification' in window) {
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          scheduleNotificationAtCyprusTime(13, 5);
+        } else {
+          alert("Notifications not allowed.");
+        }
+      });
+    } else {
+      alert("Notifications not supported on this device.");
+    }
+  }
+</script>
+
   <script>
   if ('Notification' in window) {
     Notification.requestPermission().then(permission => {
