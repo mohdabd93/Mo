@@ -4,30 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
- 
- 
-<button id="notifyBtn">جرب الإشعار الآن</button>
-
-<script>
-  document.getElementById('notifyBtn').addEventListener('click', () => {
-    if ('Notification' in window) {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          new Notification("🔔 إشعار تجريبي", {
-            body: "هذا إشعار يظهر فورًا بعد الضغط.",
-            icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
-          });
-        } else {
-          alert("لم تمنح إذن الإشعارات.");
-        }
-      });
-    } else {
-      alert("متصفحك لا يدعم الإشعارات.");
-    }
-  });
-</script>
- 
- <style>
+  <style>
     body {
       font-family: Arial, sans-serif;
       max-width: 900px;
@@ -80,14 +57,29 @@
         color: #333;
       }
     }
+    #notifyBtn {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    #notifyBtn:hover {
+      background-color: #005fa3;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>My Weekly Schedule</h1>
     <p><em>All activities linked. Gym after work. Weekends for social, review & tech.</em></p>
- 
   </header>
+
+  <button id="notifyBtn">جرب الإشعار الآن</button>
+
   <main>
     <table>
       <thead>
@@ -144,5 +136,24 @@
       </tbody>
     </table>
   </main>
+
+  <script>
+    document.getElementById('notifyBtn').addEventListener('click', () => {
+      if ('Notification' in window) {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            new Notification("🔔 إشعار تجريبي", {
+              body: "هذا إشعار يظهر فورًا بعد الضغط.",
+              icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+            });
+          } else {
+            alert("لم تمنح إذن الإشعارات.");
+          }
+        });
+      } else {
+        alert("متصفحك لا يدعم الإشعارات.");
+      }
+    });
+  </script>
 </body>
 </html>
