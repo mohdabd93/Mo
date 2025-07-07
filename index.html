@@ -4,54 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
-
-  <script>
-  // تأكد من أن المتصفح يدعم الإشعارات
+<script>
   if ('Notification' in window) {
-    // اطلب إذن الإشعارات
     Notification.requestPermission().then(permission => {
       if (permission === 'granted') {
-        scheduleDailyNotifications();
+        scheduleNotificationAtCyprusTime(13, 5);
       }
     });
   }
 
-  function scheduleDailyNotifications() {
-    const notificationTimes = [13, 14, 15]; // 13:00, 14:00, 15:00
+  function scheduleNotificationAtCyprusTime(hour, minute) {
     const now = new Date();
+    const target = new Date();
 
-    notificationTimes.forEach((hour, index) => {
-      const target = new Date();
-      target.setHours(hour, 0, 0, 0);
- 
-      const cyprusOffset = 3 * 60; // +3 hours in minutes
-      const localOffset = now.getTimezoneOffset(); // in minutes
-      const offsetDiff = (cyprusOffset + localOffset) * 60 * 1000;
+    // إعداد توقيت الإشعار (بالساعة والدقيقة)
+    target.setHours(hour, minute, 0, 0);
 
-      const timeToNotify = target.getTime() - now.getTime() - offsetDiff;
+    // حساب فرق التوقيت بين الجهاز وتوقيت نيقوسيا (GMT+3)
+    const cyprusOffsetMinutes = 3 * 60;
+    const localOffsetMinutes = now.getTimezoneOffset(); // بالسالب في الصيف
+    const offsetDifference = (cyprusOffsetMinutes + localOffsetMinutes) * 60 * 1000;
 
-      if (timeToNotify > 0) {
-        setTimeout(() => {
-          showNotification(index);
-        }, timeToNotify);
-      }
-    });
+    const timeUntilNotification = target.getTime() - now.getTime() - offsetDifference;
+
+    if (timeUntilNotification > 0) {
+      setTimeout(() => {
+        new Notification("⏰ Reminder", {
+          body: "This is your test notification for 13:05 Cyprus time.",
+          icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+        });
+      }, timeUntilNotification);
+    } else {
+      console.log("📭 الوقت المحدد قد مضى بالفعل.");
+    }
   }
 
-  function showNotification(index) {
-    const titles = ["Morning Task Reminder", "After Work Task Reminder", "Evening Task Reminder"];
-    const messages = [
-      "Time to start your morning task!",
-      "Get ready for your after-work activity!",
-      "Don't forget your evening task!"
-    ];
-
-    new Notification(titles[index], {
-      body: messages[index],
-      icon: 'https://cdn-icons-png.flaticon.com/512/1827/1827392.png'  
-    });
-  }
-</script>
  
   <style>
     body {
