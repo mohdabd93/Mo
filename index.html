@@ -5,46 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Weekly Schedule</title>
 
-  <script>
-    function initNotifications() {
-      if ('Notification' in window) {
-        Notification.requestPermission().then(permission => {
-          if (permission === 'granted') {
-            scheduleNotificationAtCyprusTime(13, 17);
-          } else {
-            alert("Notifications not allowed.");
-          }
+<button onclick="testNotification()">جرب إشعار الآن</button>
+
+<script>
+function testNotification() {
+  if ('Notification' in window) {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        new Notification("🔔 إشعار تجريبي", {
+          body: "إذا شفته، الإشعارات شغالة",
+          icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
         });
       } else {
-        alert("Notifications not supported on this device.");
+        alert("لم يتم منح إذن الإشعارات.");
       }
-    }
+    });
+  } else {
+    alert("الإشعارات غير مدعومة في هذا المتصفح.");
+  }
+}
+</script>
 
-    function scheduleNotificationAtCyprusTime(hour, minute) {
-      const now = new Date();
-      const target = new Date();
-
-      target.setHours(hour, minute, 0, 0);
-
-      // حساب فرق التوقيت بين الجهاز ونيقوسيا
-      const cyprusOffsetMinutes = -180; // UTC+3 => -180
-      const localOffsetMinutes = now.getTimezoneOffset(); // e.g., -180 in summer
-      const offsetDifference = (cyprusOffsetMinutes - localOffsetMinutes) * 60 * 1000;
-
-      const timeUntilNotification = target.getTime() - now.getTime() + offsetDifference;
-
-      if (timeUntilNotification > 0) {
-        setTimeout(() => {
-          new Notification("⏰ Reminder", {
-            body: "This is your test notification for 13:05 Cyprus time.",
-            icon: "https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
-          });
-        }, timeUntilNotification);
-      } else {
-        console.log("📭 الوقت المحدد قد مضى بالفعل.");
-      }
-    }
-  </script>
 
   <style>
     body {
