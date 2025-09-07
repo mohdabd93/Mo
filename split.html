@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4-Day Split Workout</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+  background: linear-gradient(160deg, #0f2027 0%, #2c5364 100%);
+  color: #e6eef6;
+  font-family: 'Segoe UI', Tahoma, Arial;
+  padding-top: 20px;
+}
+.container {
+  max-width: 1000px;
+}
+h2 {
+  text-align: center;
+  color: #f59e0b;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+.card-day {
+  background: rgba(11,18,32,0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  margin-bottom: 25px;
+  padding: 20px;
+}
+.card-day h3 {
+  color: #f59e0b;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.exercise-list {
+  list-style: none;
+  padding: 0;
+}
+.exercise-list li {
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.exercise-list li:hover {
+  background: rgba(245,158,11,0.3);
+}
+.exercise-list li span {
+  float: right;
+  font-weight: 600;
+}
+@media (max-width:768px) {
+  .exercise-list li {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Workout Program (4-Day Split)</h2>
+
+<div class="card-day">
+<h3>Day 1: Chest + Triceps</h3>
+<ul class="exercise-list">
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Bench Press.gif">Bench Press <span>4x6-10</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Incline Dumbbell Press.gif">Incline Dumbbell Press <span>3x8-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Chest Dips (lean forward).gif">Chest Dips <span>3x10-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Cable Crossover.gif">Cable Crossover <span>3x12-15</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Overhead Triceps Extension.gif">Overhead Triceps Extension <span>3x10-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Rope Pushdown.gif">Rope Pushdown <span>3x12-15</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Skull Crushers.gif">Skull Crushers <span>3x10</span></li>
+</ul>
+</div>
+
+<div class="card-day">
+<h3>Day 2: Back + Biceps</h3>
+<ul class="exercise-list">
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/back-extension.gif">Back Extension <span>4x5-8</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/pullups.gif">Pull-Ups / Lat Pulldown <span>4x8-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Barbell Row.gif">Barbell Row <span>3x8-10</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Seated Cable Row.gif">Seated Cable Row <span>3x10-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Dumbbell Curl.gif">Dumbbell Curl <span>3x10-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Hammer Curl.gif">Hammer Curl <span>3x12-15</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Concentration Curl.gif">Concentration Curl <span>3x12-15</span></li>
+</ul>
+</div>
+
+<div class="card-day">
+<h3>Day 3: Legs + Calves</h3>
+<ul class="exercise-list">
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Squat.gif">Squat <span>4x6-10</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Bulgarian Split Squat.gif">Bulgarian Split Squat <span>3x10/leg</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Leg Press.gif">Leg Press <span>3x10-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/leg-curl-machine.gif">Leg Extension <span>3x12-15</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Standing Calf Raise.gif">Standing Calf Raise <span>4x15-20</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Seated Calf Raise.gif">Seated Calf Raise <span>3x20</span></li>
+</ul>
+</div>
+
+<div class="card-day">
+<h3>Day 4: Shoulders + Core</h3>
+<ul class="exercise-list">
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Overhead Press.gif">Overhead Press <span>4x6-10</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Arnold Press.gif">Arnold Press <span>3x8-10</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Lateral Raise.gif">Lateral Raise <span>4x12-15</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Front Raise.gif">Front Raise <span>3x10-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Rear Delt Fly.gif">Rear Delt Fly <span>3x10-12</span></li>
+<li data-bs-toggle="modal" data-bs-target="#exerciseModal" data-image="IMGS/Face Pull.gif">Face Pull <span>3x10-12</span></li>
+</ul>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exerciseModal" tabindex="-1" aria-labelledby="exerciseModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exerciseModalLabel">Exercise Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="exerciseImage" src="" alt="Exercise" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('.exercise-list li').forEach(item => {
+  item.addEventListener('click', event => {
+    document.getElementById('exerciseImage').src = item.getAttribute('data-image');
+  });
+});
+</script>
+
+</body>
+</html>
